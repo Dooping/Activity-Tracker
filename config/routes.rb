@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get "logout", to: "devise/sessions#destroy"
   end
 
-  root 'devise/sessions#create'
+  root 'welcome#index'
 
 
   #root 'users#sign_in'

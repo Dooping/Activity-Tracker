@@ -31,6 +31,13 @@ class ProfilesController < ApplicationController
     else
       redirect_to new_user_session_path, notice: 'You are not logged in.'
     end
+
+    if !current_user.profile.nil?
+      return redirect_to profiles_path, notice: 'You can only have one profile!'
+
+      @profile.email = current_user.email
+
+    end
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
@@ -74,7 +81,7 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:name, :email, :birth, :gender, :weight, :country, :info)
+      params.require(:profile).permit(:name, :birth, :gender, :weight, :country, :info)
     end
 
 
