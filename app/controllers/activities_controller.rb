@@ -3,16 +3,16 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = Activity.all
-    respond_with(@activities)
+   # respond_with(@activities)
   end
 
   def show
-    respond_with(@activity)
+   # respond_with(@activity)
   end
 
   def new
     @activity = Activity.new
-    respond_with(@activity)
+    #respond_with(@activity)
   end
 
   def edit
@@ -21,17 +21,23 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     @activity.save
-    respond_with(@activity)
+    if current_user
+      @activity.user = current_user
+    else
+      redirect_to new_user_session_path, notice: 'You are not logged in.'
+    end
+
+    # respond_with(@activity)
   end
 
   def update
     @activity.update(activity_params)
-    respond_with(@activity)
+   # respond_with(@activity)
   end
 
   def destroy
     @activity.destroy
-    respond_with(@activity)
+   # respond_with(@activity)
   end
 
   private

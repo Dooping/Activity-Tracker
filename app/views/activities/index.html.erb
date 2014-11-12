@@ -10,6 +10,7 @@
       <th>Initialtime</th>
       <th>Place</th>
       <th>Gpx</th>
+      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td><%= activity.initialTime %></td>
         <td><%= activity.place %></td>
         <td><%= activity.gpx %></td>
+        <td><%= activity.user %></td>
         <td><%= link_to 'Show', activity %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>

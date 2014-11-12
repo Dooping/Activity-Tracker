@@ -1,8 +1,22 @@
 Rails.application.routes.draw do
+  resources :friendships
+
   resources :activities
 
   devise_for :users
   resources :profiles
+
+  devise_scope :user do
+    get "signup", to: "devise/registrations#new"
+    get "login", to: "devise/sessions#new"
+    get "logout", to: "devise/sessions#destroy"
+  end
+
+  root 'devise/sessions#create'
+
+
+  #root 'users#sign_in'
+  #root :to => "/devise/sessions#new"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
