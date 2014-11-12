@@ -26,6 +26,11 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
 
+    if current_user
+      @profile.user_id = current_user.id
+    else
+      redirect_to new_user_session_path, notice: 'You are not logged in.'
+    end
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }

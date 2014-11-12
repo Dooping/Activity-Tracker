@@ -20,12 +20,13 @@ class ActivitiesController < ApplicationController
 
   def create
     @activity = Activity.new(activity_params)
-    @activity.save
+
     if current_user
-      @activity.user = current_user
+      @activity.user_id = current_user.id
     else
       redirect_to new_user_session_path, notice: 'You are not logged in.'
     end
+    @activity.save
 
     # respond_with(@activity)
   end
