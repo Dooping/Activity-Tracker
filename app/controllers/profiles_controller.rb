@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   def index
     @profiles = Profile.all
+    #@profiles = Profile.find_by_email(:current_user).
   end
 
   # GET /profiles/1
