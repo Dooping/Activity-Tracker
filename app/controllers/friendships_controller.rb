@@ -1,17 +1,25 @@
 class FriendshipsController < ApplicationController
-  before_action :set_friendship, only: [:show, :update, :destroy]
+  before_action :set_friendship, only: [:show, :update, :destroy, :edit]
 
   def index
-    @friendships = Friendship.where(Email2: current_user.email)
+    @invites = Friendship.where(Email1: current_user.email,accepted: false)
+    @friendships = (Friendship.where(Email2: current_user.email,accepted: true).select("user_id","email1 as email"))+
+        (Friendship.where(Email1: current_user.email,accepted: true).select("user_id2 as user_id","email2 as email"))
     if not params[:search].blank?
-      #@friendships = Friendship.all
-      @friendships = @friendships.where("Email1 like ?", "%#{params[:search]}%")
+      @friendships = @friendships.where("email like ?", "%#{params[:search]}%")
     end
+
     #respond_with(@friendships)
   end
 
   def show
    # respond_with(@friendship)
+  end
+
+  def edit
+    @friendship = Friendship.find(params[:id])
+    @friendship.accepted = true;
+    @friendship.save
   end
 
   def new
@@ -27,6 +35,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.new(friendship_params)
     @friendship.email2 = current_user.email
     @friendship.user_id = User.where(email: @friendship.email1).first.id
+    @friendship.user_id2 = current_user.id
     @friendship.accepted = false
     @friendship.save
   #  respond_with(@friendship)
