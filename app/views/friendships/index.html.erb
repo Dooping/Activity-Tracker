@@ -2,7 +2,6 @@
 
 <h1>Listing Friendships</h1>
 <form>
-  <label for="searchbox">Search</label>
   <input id="searchbox" type="text" name="search">
   <input type="submit" value="search">
 </form>
@@ -18,9 +17,8 @@
   <tbody>
     <% @friendships.each do |friendship| %>
       <tr>
-        <td><%= friendship.user.profile.name %></td>
+        <td><%= link_to friendship.user.profile.name, friendship.user.profile %></td>
         <td><%= link_to 'Show', friendship %></td>
-        <td><%= link_to 'Edit', edit_friendship_path(friendship) %></td>
         <td><%= link_to 'Destroy', friendship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

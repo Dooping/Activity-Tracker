@@ -3,3 +3,27 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', friendships_path %>
+
+<form>
+  <input id="searchbox" type="text" name="search">
+  <input type="submit" value="search">
+</form>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.profile.name, user.profile %></td>
+        <td><%= user.email %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

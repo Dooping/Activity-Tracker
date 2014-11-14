@@ -1,5 +1,5 @@
 class FriendshipsController < ApplicationController
-  before_action :set_friendship, only: [:show, :edit, :update, :destroy]
+  before_action :set_friendship, only: [:show, :update, :destroy]
 
   def index
     @friendships = Friendship.where(Email2: current_user.email)
@@ -16,11 +16,12 @@ class FriendshipsController < ApplicationController
 
   def new
     @friendship = Friendship.new
-    #respond_with(@friendship)
+    @users = User.all
+    if not params[:search].blank?
+      @users = User.joins(:profile).where("name like ?", "%#{params[:search]}%")
+    end
   end
 
-  def edit
-  end
 
   def create
     @friendship = Friendship.new(friendship_params)
