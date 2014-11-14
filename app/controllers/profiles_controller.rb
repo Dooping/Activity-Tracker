@@ -4,8 +4,8 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @profiles = Profile.all
-    #@profiles = Profile.find_by_email(:current_user).
+    #@profiles = Profile.all
+    @profiles = Profile.where(user_id: current_user)
   end
 
   # GET /profiles/1
@@ -36,10 +36,10 @@ class ProfilesController < ApplicationController
     if !current_user.profile.nil?
       return redirect_to profiles_path, notice: 'You can only have one profile!'
 
-      @profile.email = current_user.email
-
     end
     respond_to do |format|
+      @profile.email = current_user.email
+
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
         format.json { render :show, status: :created, location: @profile }
@@ -53,13 +53,17 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
-    respond_to do |format|
-      if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
-        format.json { render :show, status: :ok, location: @profile }
-      else
-        format.html { render :edit }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+    if @profile.user_id != current_user.id
+        redirect_to profiles_path, notice: 'You can only edit your profile. '
+    else
+      respond_to do |format|
+        if @profile.update(profile_params)
+          format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+          format.json { render :show, status: :ok, location: @profile }
+        else
+          format.html { render :edit }
+          format.json { render json: @profile.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

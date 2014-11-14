@@ -1,3 +1,3 @@
 class Friendship < ActiveRecord::Base
-  has_many :users, through :profile
+  has_many :users
 end
