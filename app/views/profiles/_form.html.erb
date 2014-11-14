@@ -17,15 +17,15 @@
   </div>
   <div class="field">
     <%= f.label :birth %><br>
-    <%= f.date_select :birth %>
+    <%= f.date_select(:birth,:start_year => Time.now.year - 10,:end_year => 1910)  %>
   </div>
   <div class="field">
     <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
+    <%= f.select :gender, ['Male', 'Female', 'Not telling'] %>
   </div>
   <div class="field">
     <%= f.label :weight %><br>
-    <%= f.number_field :weight %>
+    <%= f.number_field :weight, :class => 'text_field' %>
   </div>
   <div class="field">
     <%= f.label :country %><br>

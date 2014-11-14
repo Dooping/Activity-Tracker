@@ -2,7 +2,8 @@ class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
   def index
-    @activities = Activity.all
+    @friends = current_user.friendships.where(accepted: true)
+    @activities = Activity.all.where(user_id: @friends)+(Activity.all.where(user_id: current_user))
    # respond_with(@activities)
   end
 
