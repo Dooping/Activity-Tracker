@@ -25,6 +25,7 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(friendship_params)
     @friendship.email2 = current_user.email
+    @friendship.user_id = User.where(email: @friendship.email1).first.id
     @friendship.accepted = false
     @friendship.save
   #  respond_with(@friendship)
