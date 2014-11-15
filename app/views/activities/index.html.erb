@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Type</th>
       <th>Duration</th>
       <th>Initialtime</th>
       <th>Place</th>
@@ -19,6 +20,7 @@
     <% @activities.each do |activity| %>
       <tr>
         <td><%= activity.name %></td>
+        <td><%= activity.type %></td>
         <td><%= activity.duration %></td>
         <td><%= activity.initialTime %></td>
         <td><%= activity.place %></td>

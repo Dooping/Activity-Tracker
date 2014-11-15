@@ -21,7 +21,6 @@ class ActivitiesController < ApplicationController
 
   def create
     @activity = Activity.new(activity_params)
-
     if current_user
       @activity.user_id = current_user.id
     else

@@ -16,6 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :type %><br>
+    <%= f.select(:type, ['Natação', 'Atletismo', 'Outra'],{prompt: "Select type"})%>
+  </div>
+  <div class="field">
     <%= f.label :duration %><br>
     <%= f.number_field :duration %>
   </div>
