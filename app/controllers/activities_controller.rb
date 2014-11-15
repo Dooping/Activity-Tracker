@@ -47,6 +47,6 @@ class ActivitiesController < ApplicationController
     end
 
     def activity_params
-      params.require(:activity).permit(:name, :duration, :initialTime, :place, :gpx)
+      params.require(:activity).permit(:name, :acttype, :duration, :initialTime, :place, :gpx)
     end
 end
