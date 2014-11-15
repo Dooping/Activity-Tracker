@@ -3,8 +3,8 @@ class FriendshipsController < ApplicationController
 
   def index
     @invites = Friendship.where(Email1: current_user.email,accepted: false)
-    @friendships = (Friendship.where(Email2: current_user.email,accepted: true).select("user_id","email1 as email"))+
-        (Friendship.where(Email1: current_user.email,accepted: true).select("user_id2 as user_id","email2 as email"))
+    @friendships = (Friendship.where(Email2: current_user.email,accepted: true).select("user_id","email1 as email","id"))+
+        (Friendship.where(Email1: current_user.email,accepted: true).select("user_id2 as user_id","email2 as email","id"))
     if not params[:search].blank?
       @friendships = @friendships.where("email like ?", "%#{params[:search]}%")
     end

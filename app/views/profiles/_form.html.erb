@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :country %><br>
-    <%= f.text_field :country %>
+    <%= f.country_select :country, priority_countries: ["PT","es","GB","fr"] %>
   </div>
   <div class="field">
     <%= f.label :info %><br>

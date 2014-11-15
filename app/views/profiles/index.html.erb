@@ -25,7 +25,7 @@
         <td><%= profile.birth %></td>
         <td><%= profile.gender %></td>
         <td><%= profile.weight %></td>
-        <td><%= profile.country %></td>
+        <td><%= ISO3166::Country[profile.country] %></td>
         <td><%= profile.info %></td>
         <td><%= profile.user.email %></td>
         <td><%= link_to 'Show', profile %></td>

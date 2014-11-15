@@ -27,7 +27,7 @@
 
 <p>
   <strong>Country:</strong>
-  <%= @profile.country %>
+  <%= ISO3166::Country[@profile.country] %>
 </p>
 
 <p>
