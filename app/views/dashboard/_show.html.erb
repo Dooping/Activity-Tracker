@@ -1,0 +1,30 @@
+<%= form_for(@profile) do |f| %>
+    <% if @profile.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+          <ul>
+            <% @profile.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div id="profile">
+      <ul>
+        <li class="detail"><b id="element">Name:</b>
+          <%= @profile.name %></li>
+        <li class="detail"><b id="element">Birth:</b>
+          <%= @profile.birth %></li>
+        <li class="detail"><b id="element">Gender:</b>
+          <%= @profile.gender %></li>
+        <li class="detail"><b id="element">Weight:</b>
+          <%= @profile.weight %></li>
+        <li class="detail"><b id="element">Country:</b>
+          <%= ISO3166::Country[@profile.country] %></li>
+        <li class="detail"><b id="element">info:</b>
+          <%= @profile.info %></li>
+      </ul>
+    </div>
+<% end %>

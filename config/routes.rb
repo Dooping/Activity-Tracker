@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
+
   resources :friendships
 
   resources :activities
 
   devise_for :users
   resources :profiles
+
+  resources :dashboard
 
   devise_scope :user do
     get "signup", to: "devise/registrations#new"
