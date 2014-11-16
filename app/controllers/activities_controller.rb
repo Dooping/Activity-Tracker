@@ -4,6 +4,8 @@ class ActivitiesController < ApplicationController
   def index
     @friends = current_user.friendships.where(accepted: true)
     @activities = Activity.all.where(user_id: @friends)+(Activity.all.where(user_id: current_user))
+    @activities = @activities.sort_by(&:"#{:initialTime}")
+    @activities = @activities.reverse
    # respond_with(@activities)
   end
 

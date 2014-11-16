@@ -2,4 +2,14 @@
 
 <%= render partial: "show", locals: { profile: @profile } %>
 
-<%= render partial: "timeline", locals: { activities: @activities } %>
+<% @activities.each do |activity| %>
+    <div>
+      <%= activity.name %>
+      <%= activity.acttype %>
+      <%= activity.duration %>
+      <%= activity.initialTime %>
+      <%= activity.place %>
+      <%= activity.gpx %>
+      <%= activity.user.profile.name %>
+    </div>
+<% end %>

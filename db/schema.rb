@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115163725) do
+ActiveRecord::Schema.define(version: 20141116021309) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
     t.integer  "duration"
-    t.time     "initialTime"
+    t.datetime "initialTime"
     t.string   "place"
     t.string   "gpx"
     t.datetime "created_at",  null: false
