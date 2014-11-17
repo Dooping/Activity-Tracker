@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+p.navbar-text.pull-right{
+    position: fixed;
+    margin: 0;
+    text-align: right;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+#everything{
+    padding-top: 10px;
+}
+
+body{
+    margin: 0;
+}

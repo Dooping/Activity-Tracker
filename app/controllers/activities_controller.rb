@@ -29,17 +29,20 @@ class ActivitiesController < ApplicationController
       redirect_to new_user_session_path, notice: 'You are not logged in.'
     end
     @activity.save
+    redirect_to activity_path(@activity.id)
 
-    # respond_with(@activity)
+    #respond_with(@activity)
   end
 
   def update
     @activity.update(activity_params)
+    redirect_to activity_path(@activity.id)
    # respond_with(@activity)
   end
 
   def destroy
     @activity.destroy
+    redirect_to activities_path
    # respond_with(@activity)
   end
 

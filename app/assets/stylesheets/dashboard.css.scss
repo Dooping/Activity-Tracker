@@ -3,3 +3,48 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 ul.horizontal > li { display: inline-block; }
+
+//.p1 { display: inline-block; }
+
+ul.details > li { display: inline-block; }
+
+//.d2 { display: inline-block; }
+
+ul.actdetails > li { display: inline-block; }
+
+header{box-sizing: border-box;
+  position: fixed;
+  margin-top: 18px;
+  width: 100%;
+  float: top;
+  border-bottom: solid #6f6d6f 1px;
+  padding: 0%;
+  background-color: #ffffff;}
+
+ul.profile1{list-style-type: none;
+  clear: left;}
+
+ul.profile {
+  box-sizing: border-box;
+  border-right: solid #a3a1a3 1px;
+  margin-top: 157px;
+  width: 20%;
+  height: 100%;
+  position: fixed;
+  float: left;
+  padding: 0%;
+}
+
+div.allActivities{
+  box-sizing: border-box;
+  margin-top: 200px;
+  margin-left: 25%;
+  float:left;
+  list-style-type: none;
+  width: 40%;
+  }
+
+ul.activity{
+  list-style-type: none;
+}
+

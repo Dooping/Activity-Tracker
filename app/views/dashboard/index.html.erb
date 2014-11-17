@@ -1,23 +1,31 @@
 <header>
-  <ul class="horizontal">
-    <li><%= image_tag 'logo.png', :alt => 'logo' %></li>
-    <li><%=link_to 'Dashboard',dashboard_index_path%></li>
-    <li><%=link_to 'Profile',profile_path(@profile)%></li>
-    <li><%=link_to 'Friends',friendships_path%></li>
-    <li><%=link_to 'Activities',activities_path%></li>
-  </ul>
+  <%= render 'menu' %>
 </header>
 
-<%= render partial: "show", locals: { profile: @profile } %>
+<ul class="profile">
+    <%= render partial: "show", locals: { profile: @profile } %>
+</ul>
 
+<div id="allActivities" name="allActivities" class ="allActivities">
 <% @activities.each do |activity| %>
     <div>
-      <%= activity.name %>
-      <%= activity.acttype %>
-      <%= activity.duration %>
-      <%= activity.initialTime %>
-      <%= activity.place %>
-      <%= activity.gpx %>
-      <%= activity.user.profile.name %>
+          <ul class="activity">
+            <p1>
+              <li><%= activity.user.profile.name %></li>
+            </p1>
+            <ul class="details">
+              <li><%= activity.place %></li> no dia
+              <li><%= activity.initialTime %></li> durante
+              <li><%= activity.duration %></li>h
+            </ul>
+            <p2>
+              <li><%= activity.gpx %></li>
+            </p2>
+            <ul class="actdetails">
+              <li><%= activity.name %></li> -
+              <li><%= activity.acttype%></li>
+            </ul>
+          </ul>
     </div>
 <% end %>
+</div>

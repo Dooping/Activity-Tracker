@@ -3,30 +3,38 @@ class FriendshipsController < ApplicationController
 
   def index
     @invites = Friendship.where(Email1: current_user.email,accepted: false)
+    if params[:search].blank?
     @friendships = (Friendship.where(Email2: current_user.email,accepted: true).select("user_id","email1 as email","id"))+
         (Friendship.where(Email1: current_user.email,accepted: true).select("user_id2 as user_id","email2 as email","id"))
-    if not params[:search].blank?
-      @friendships = @friendships.where("email like ?", "%#{params[:search]}%")
+    else
+      @friendships = (Friendship.where(Email2: current_user.email,accepted: true,Email1: params[:search]).select("user_id","email1 as email","id"))+
+          (Friendship.where(Email1: current_user.email,accepted: true,Email2: params[:search]).select("user_id2 as user_id","email2 as email","id"))
     end
 
     #respond_with(@friendships)
   end
 
   def show
-   # respond_with(@friendship)
+    if not (current_user.email == @friendship.email2 || current_user.email == @friendship.email1)
+      redirect_to friendships_path
+    end
   end
 
   def edit
     @friendship = Friendship.find(params[:id])
-    @friendship.accepted = true;
-    @friendship.save
+    if current_user.email == @friendship.email1
+      @friendship.accepted = true
+      @friendship.save
+    else
+      redirect_to friendships_path
+    end
   end
 
   def new
     @friendship = Friendship.new
     @users = User.all
     if not params[:search].blank?
-      @users = User.joins(:profile).where("name like ?", "%#{params[:search]}%")
+      @users = User.joins(:profile).all.where("name like ?", "%#{params[:search]}%")
     end
   end
 
@@ -37,17 +45,25 @@ class FriendshipsController < ApplicationController
     @friendship.user_id = User.where(email: @friendship.email1).first.id
     @friendship.user_id2 = current_user.id
     @friendship.accepted = false
-    @friendship.save
+    if not (@friendship.email1 == current_user.email)
+      @friendship.save
+      redirect_to friendship_path(@friendship.id)
+    else
+      redirect_to friendships_path, notice: 'You cant add yourself as a friend'
+    end
   #  respond_with(@friendship)
   end
 
   def update
     @friendship.update(friendship_params)
-    #respond_with(@friendship)
+    redirect_to friendships_path
   end
 
   def destroy
-    @friendship.destroy
+    if  (current_user.email == @friendship.email2 || current_user.email == @friendship.email1)
+      @friendship.destroy
+    end
+    redirect_to friendships_path
   #  respond_with(@friendship)
   end
 
