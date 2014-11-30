@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141116021309) do
   create_table "activities", force: true do |t|
     t.string   "name"
     t.integer  "duration"
-    t.datetime "initialTime"
+    t.time     "initialTime"
     t.string   "place"
     t.string   "gpx"
     t.datetime "created_at",  null: false

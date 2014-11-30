@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails segales: development" uuid="e2010632-31cd-4ceb-9bb9-5b927753291c">
+      <secret-storage>memory</secret-storage>
+    </data-source>
+  </component>
+</project>
