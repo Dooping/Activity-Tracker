@@ -43,6 +43,7 @@ class ActivitiesController < ApplicationController
   end
 
   def update
+    @profile = current_user.profile
     @activity.update(activity_params)
     redirect_to activity_path(@activity.id)
    # respond_with(@activity)

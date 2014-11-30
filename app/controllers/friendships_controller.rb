@@ -32,6 +32,7 @@ class FriendshipsController < ApplicationController
   end
 
   def new
+    @profile = current_user.profile
     @friendship = Friendship.new
     @users = User.all
     if not params[:search].blank?
