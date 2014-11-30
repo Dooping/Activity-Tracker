@@ -20,6 +20,14 @@
       Logged in as <strong><%= current_user.email %></strong>.
       <%= link_to 'Edit account', edit_user_registration_path, :class => 'navbar-link' %> |
       <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+
+      <header>
+        <%= render 'layouts/menu' %>
+      </header>
+
+      <ul class="profile">
+        <%= render partial: "layouts/show", locals: { profile: @profile } %>
+      </ul>
   <% else %>
       <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
       <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>

@@ -1,11 +1,3 @@
-<header>
-  <%= render 'menu' %>
-</header>
-
-<ul class="profile">
-    <%= render partial: "show", locals: { profile: @profile } %>
-</ul>
-
 <div id="allActivities" name="allActivities" class ="allActivities">
 <% @activities.each do |activity| %>
     <div>
@@ -31,5 +23,5 @@
 </div>
 
 <div id="allActivities" name="allActivities" class ="allActivities">
-<%= render partial: "index" %>
+<%= render partial: "calendar" %>
 </div>

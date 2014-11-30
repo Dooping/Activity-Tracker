@@ -2,6 +2,7 @@ class FriendshipsController < ApplicationController
   before_action :set_friendship, only: [:show, :update, :destroy, :edit]
 
   def index
+    @profile = current_user.profile
     @invites = Friendship.where(Email1: current_user.email,accepted: false)
     if params[:search].blank?
     @friendships = (Friendship.where(Email2: current_user.email,accepted: true).select("user_id","email1 as email","id"))+
