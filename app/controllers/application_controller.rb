@@ -4,4 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!
+  if :current_user.profile.nil?
+    redirect_to new_profile_path
+  end
 end
