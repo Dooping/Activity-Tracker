@@ -1,3 +1,4 @@
+<ul class="edit_pro">
 <%= form_for(@profile) do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
@@ -10,6 +11,7 @@
       </ul>
     </div>
   <% end %>
+
 
   <div class="field">
     <%= f.label :name %><br>
@@ -38,4 +40,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+</ul>
 <% end %>

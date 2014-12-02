@@ -73,6 +73,7 @@ function get_calendar(day_no, days){
   var count = 1;
   for(; c<=6; c++){
     var td = document.createElement('td');
+    td.onclick=function(){window.alert("hey")};
     td.innerHTML = count;
     count++;
     tr.appendChild(td);
@@ -87,6 +88,7 @@ function get_calendar(day_no, days){
         return table;
       }
       var td = document.createElement('td');
+      td.onclick=function(){window.alert("hey")};
       td.innerHTML = count;
       count++;
       tr.appendChild(td);

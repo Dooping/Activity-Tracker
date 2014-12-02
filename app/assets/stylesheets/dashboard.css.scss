@@ -22,7 +22,7 @@ header{box-sizing: border-box;
   background-color: #ffffff;}
 
 ul.profile1{list-style-type: none;
-  clear: left;}
+  clear: center;}
 
 ul.profile {
   box-sizing: border-box;
@@ -44,7 +44,57 @@ div.allActivities{
   width: 40%;
   }
 
+
 ul.activity{
   list-style-type: none;
 }
 
+
+
+ul.profile{
+  text-align: left;
+
+  
+}
+
+ul.edit_pro{
+  margin-top:140px;
+  text-align:left;
+  margin-left: 300px;
+}
+
+ul.friends{
+  margin-top:160px;
+  text-align:left;
+  margin-left: 300px;
+}
+
+ul.activities{
+  margin-top:160px;
+  text-align:left;
+  margin-left: 300px;
+}
+
+ul.new_activity{
+  margin-top:120px;
+  text-align:left;
+  margin-left: 300px;
+}
+
+ul.new_friendship{
+  margin-top:120px;
+  text-align:left;
+  margin-left: 300px;
+}
+
+ul.show_profile{
+  margin-top:120px;
+  text-align:left;
+  margin-left: 300px;
+}
+
+ul.show_friendships{
+  margin-top:150px;
+  text-align:left;
+  margin-left: 300px;
+}
