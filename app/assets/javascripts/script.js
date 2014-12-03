@@ -73,7 +73,16 @@ function get_calendar(day_no, days){
   var count = 1;
   for(; c<=6; c++){
     var td = document.createElement('td');
-    td.onclick=function(){window.alert("hey")};
+    var day = new Date(d.getFullYear(),d.getMonth()+1, c);
+    
+    td.onclick=function(){
+      var id = $(this).attr("id");
+
+      $.ajax({
+        url: "/activities/",
+      });
+    }
+
     td.innerHTML = count;
     count++;
     tr.appendChild(td);
@@ -96,4 +105,8 @@ function get_calendar(day_no, days){
     table.appendChild(tr);
   }
   return table;
+}
+
+function goto(day){
+
 }

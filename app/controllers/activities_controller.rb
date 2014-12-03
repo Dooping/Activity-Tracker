@@ -4,7 +4,6 @@ class ActivitiesController < ApplicationController
   def index
     @profile = current_user.profile
     @friends = current_user.friendships.where(accepted: true)
-    #@datee = {"year"=>"2000","month"=>"12","day"=>"1"}
     if params[:datee].blank?
       @activities = Activity.all.where(user_id: @friends)+(Activity.all.where(user_id: current_user))
     else

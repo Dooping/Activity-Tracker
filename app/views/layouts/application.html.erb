@@ -22,7 +22,7 @@
       <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 
       <header>
-        <%= render 'layouts/menu' %>
+        <%= render partial: 'layouts/menu' , locals: { profile: @profile }%>
       </header>
 
       <% if !current_user.profile.nil? %>
