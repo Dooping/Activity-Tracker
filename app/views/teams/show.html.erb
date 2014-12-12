@@ -1,0 +1,38 @@
+<ul class="show_team">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @team.name %>
+</p>
+
+<p>
+  <strong>Leader:</strong>
+  <%= @team.leader_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @team.description %>
+</p>
+
+<p>
+  <strong>Sport:</strong>
+  <%= @team.sport_id %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @team.profile_id %>
+</p>
+<%if current_user.profile.id == @team.leader_id %>
+  <%= link_to 'Edit', edit_team_path(@team) %>
+<%else %>
+  <%if @members.include?(current_user.profile.id) %>
+    <%= link_to 'Leave', edit_team_path(@team) %>
+  <%else %>
+    <%= link_to 'Join', edit_team_path(@team) %>
+  <%end%>
+<%end%>
+<%= link_to 'Back', teams_path %>
+</ul>
