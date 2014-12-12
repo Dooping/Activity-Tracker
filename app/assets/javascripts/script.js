@@ -97,7 +97,7 @@ function get_calendar(day_no, days){
         return table;
       }
       var td = document.createElement('td');
-      td.onclick=function(){window.alert("hey")};
+      td.onclick=function(){window.alert(count)};
       td.innerHTML = count;
       count++;
       tr.appendChild(td);

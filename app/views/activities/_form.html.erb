@@ -17,15 +17,21 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.select :acttype, ['Atletismo', 'Natação', 'Outra'], {prompt: "Select Type"}%>
+     <%= f.collection_select :sport_id, Sport.order(:name),:id,:name, prompt: "Select Sport" %>
+    <%= link_to "New Sport", new_sport_path %>
   </div>
   <div class="field">
     <%= f.label :duration %><br>
     <%= f.number_field :duration %>
   </div>
   <div class="field">
+    <%= f.label :distance %><br>
+    <%= f.number_field :distance %>
+  </div>
+  <div class="field">
     <%= f.label :initialTime %><br>
     <%= f.datetime_select :initialTime %>
+
   </div>
   <div class="field">
     <%= f.label :place %><br>

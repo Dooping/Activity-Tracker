@@ -16,6 +16,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    @profile = current_user.profile
    # respond_with(@activity)
   end
 
@@ -26,18 +27,21 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
+    @profile = current_user.profile
   end
 
   def create
+    @profile = current_user.profile
     @activity = Activity.new(activity_params)
     if current_user
       @activity.user_id = current_user.id
     else
       redirect_to new_user_session_path, notice: 'You are not logged in.'
     end
-    @activity.save
-    redirect_to activity_path(@activity.id)
 
+    if @activity.save
+      redirect_to activity_path(@activity.id)
+    end 
     #respond_with(@activity)
   end
 
@@ -60,6 +64,6 @@ class ActivitiesController < ApplicationController
     end
 
     def activity_params
-      params.require(:activity).permit(:name, :acttype, :duration, :initialTime, :place, :gpx)
+      params.require(:activity).permit(:name, :acttype, :duration,:distance, :initialTime, :place, :gpx)
     end
 end
