@@ -47,5 +47,7 @@ group :development, :test do
   gem 'country_select', github: 'stefanpenner/country_select'
 
   gem 'omniauth-facebook'
+
+  gem "omniauth-google-oauth2"
 end
 
