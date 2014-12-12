@@ -45,5 +45,7 @@ group :development, :test do
   gem 'devise'
 
   gem 'country_select', github: 'stefanpenner/country_select'
+
+  gem 'omniauth-facebook'
 end
 
