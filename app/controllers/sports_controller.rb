@@ -10,6 +10,11 @@ class SportsController < ApplicationController
     @sport = Sport.new
   end
 
+  def index
+    @profile = current_user.profile
+    @sports= Sport.all
+  end
+
   def edit
     @profile = current_user.profile
   end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'leaderboard/index'
+
   resources :teams
 
   resources :sports
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
   resources :profiles
 
   resources :dashboard
+
+  resources :leaderboard
 
   devise_scope :user do
     get "signup", to: "devise/registrations#new"
